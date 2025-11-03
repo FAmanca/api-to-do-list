@@ -13,7 +13,13 @@ class ToDoController extends Controller
     public function getList()
     {
         try {
+
             $lists = ToDoList::paginate(10);
+            if ($lists->isEmpty()) {
+                 return response()->json([
+                'message' => 'No Data',
+            ], 200);
+            }
 
             return response()->json([
                 'message' => 'Success',
@@ -44,7 +50,7 @@ class ToDoController extends Controller
             $list->description = $request->input('description');
             $list->priority = $request->input('priority');
             $list->due_date = $request->input('due_date');
-            $list->is_completed = $request->input('is_completed') == null ? false : $request->input('is_completed');
+            $list->is_completed = $request->input('is_completed') == null ? 0 : $request->input('is_completed');
             $list->save();
 
             return response()->json([
@@ -62,12 +68,49 @@ class ToDoController extends Controller
 
     public function updateList(ToDoList $list , Request $request)
     {
+        try {
+             $validate = Validator::make($request->all(), [
+                'title' => 'nullable|string|max:255',
+                'description' => 'nullable|string',
+                'priority' => 'nullable|in:low,medium,high',
+                'due_date' => 'nullable|date',
+                'is_completed' => 'nullable|boolean'
+            ]);
 
+              $list->update([
+                 'title' => $request->title,
+                 'description' => $request->description,
+                 'priority' => $request->priority,
+                 'due_date' => $request->due_date,
+                 'is_completed' => $request->is_completed,
+            ]);
+            return response()->json([
+                'message' => 'Update Success',
+                'list' => $list
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Internal Server Error',
+                // 'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function deleteList(ToDoList $list)
     {
+        try {
+          $list->delete();
 
+            return response()->json([
+                'message' => 'Delete Success',
+                'list' => $list
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Internal Server Error',
+                // 'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
 
