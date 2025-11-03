@@ -16,18 +16,21 @@ class ToDoController extends Controller
 
             $lists = ToDoList::paginate(10);
             if ($lists->isEmpty()) {
-                 return response()->json([
-                'message' => 'No Data',
-            ], 200);
+                return response()->json([
+                    'status' => false,
+                    'message' => 'No Data',
+                ], 200);
             }
 
             return response()->json([
+                'status' => true,
                 'message' => 'Success',
                 'lists' => $lists
             ], 200);
 
         } catch (Exception $e) {
             return response()->json([
+                'status' => false,
                 'message' => 'Something Went Wrong',
                 // 'error' => $e->getMessage()
             ], 500);
@@ -54,22 +57,24 @@ class ToDoController extends Controller
             $list->save();
 
             return response()->json([
+                'status' => true,
                 'message' => 'Success',
                 'list' => $list
             ], 201);
 
         } catch (Exception $e) {
             return response()->json([
+                'status' => false,
                 'message' => 'Something Went Wrong',
                 // 'error' => $e->getMessage()
             ], 500);
         }
     }
 
-    public function updateList(ToDoList $list , Request $request)
+    public function updateList(ToDoList $list, Request $request)
     {
         try {
-             $validate = Validator::make($request->all(), [
+            $validate = Validator::make($request->all(), [
                 'title' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
                 'priority' => 'nullable|in:low,medium,high',
@@ -77,20 +82,22 @@ class ToDoController extends Controller
                 'is_completed' => 'nullable|boolean'
             ]);
 
-              $list->update([
-                 'title' => $request->title,
-                 'description' => $request->description,
-                 'priority' => $request->priority,
-                 'due_date' => $request->due_date,
-                 'is_completed' => $request->is_completed,
+            $list->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'priority' => $request->priority,
+                'due_date' => $request->due_date,
+                'is_completed' => $request->is_completed,
             ]);
             return response()->json([
+                'status' => true,
                 'message' => 'Update Success',
                 'list' => $list
             ], 200);
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Internal Server Error',
+                'status' => false,
+                'message' => 'Something Went Wrong',
                 // 'error' => $e->getMessage()
             ], 500);
         }
@@ -99,7 +106,7 @@ class ToDoController extends Controller
     public function deleteList(ToDoList $list)
     {
         try {
-          $list->delete();
+            $list->delete();
 
             return response()->json([
                 'message' => 'Delete Success',
@@ -107,7 +114,7 @@ class ToDoController extends Controller
             ], 200);
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Internal Server Error',
+                'message' => 'Something Went Wrong',
                 // 'error' => $e->getMessage()
             ], 500);
         }
