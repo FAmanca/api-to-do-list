@@ -36,7 +36,7 @@ class ToDoController extends Controller
                 'description' => 'nullable|string',
                 'priority' => 'nullable|in:low,medium,high',
                 'due_date' => 'nullable|date',
-                'is_completed' => 'nullable|boolean'
+                'is_completed' => 'boolean'
             ]);
 
             $list = new ToDoList();
@@ -44,7 +44,7 @@ class ToDoController extends Controller
             $list->description = $request->input('description');
             $list->priority = $request->input('priority');
             $list->due_date = $request->input('due_date');
-            $list->is_completed = $request->input('is_completed');
+            $list->is_completed = $request->input('is_completed') == null ? false : $request->input('is_completed');
             $list->save();
 
             return response()->json([
