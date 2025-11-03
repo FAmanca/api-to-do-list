@@ -12,6 +12,7 @@ API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix 
 - **Response Example:**
 ```json
 {
+    "status": true,
     "message": "Success",
     "lists": {
         "current_page": 1,
@@ -105,6 +106,7 @@ API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix 
 - **Response Example:**
 ```json
 {
+    "status": true,
     "message": "Success",
     "list": {
         "title": "List no 2",
@@ -136,6 +138,7 @@ API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix 
 - **Response Example:**
 ```json
 {
+    "status": true,
     "message": "Update Success",
     "list": {
         "id": 1,
@@ -157,6 +160,7 @@ API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix 
 - **Response Example:**
 ```json
 {
+    "status": true,
     "message": "Delete Success",
     "list": {
         "id": 1,
