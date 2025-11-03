@@ -2,6 +2,8 @@
 
 API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix `/api/lists`.
 
+## Base URL
+https://magang.sekolahan.id
 
 ## Endpoints
 
