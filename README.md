@@ -170,3 +170,8 @@ API sederhana untuk mengelola daftar ToDo. Semua endpoint diawali dengan prefix 
     }
 }
 ```
+
+
+## Download Postman Collection
+
+[Download Postman Collection](postman.json)
