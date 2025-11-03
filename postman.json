@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "cc59914d-0929-4be6-9f06-924ad96dd363",
+		"name": "API TODO LIST V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39729912"
+	},
+	"item": [
+		{
+			"name": "ToDoList",
+			"item": [
+				{
+					"name": "store list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "List no 1 ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "deskripsi list no 1",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "low",
+									"type": "text"
+								},
+								{
+									"key": "due_date",
+									"value": "2025-11-03",
+									"type": "text"
+								},
+								{
+									"key": "is_completed",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/lists",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/lists",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete list",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/lists/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"lists",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
