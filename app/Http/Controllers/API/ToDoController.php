@@ -109,6 +109,7 @@ class ToDoController extends Controller
             $list->delete();
 
             return response()->json([
+                'status' => true,
                 'message' => 'Delete Success',
                 'list' => $list
             ], 200);
