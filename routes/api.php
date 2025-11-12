@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ProfileController;
 use App\Http\Controllers\API\ToDoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +27,8 @@ Route::group(['prefix' => 'lists', 'as' => 'lists.'], function () {
     Route::put('/{list}', [ToDoController::class, 'updateList'])->name('store');
     Route::delete('/{list}', [ToDoController::class, 'deleteList'])->name('store');
 });
+
+Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
+
