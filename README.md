@@ -158,4 +158,47 @@ https://magang.sekolahan.id
     }
 }
 ```
+### 5. Update Profile
+- **Method:** `PATCH`
+- **URL:** `/api/profile/update/{id}`
+- **Description:** Mengubah/MengUpdate foto profile.
+- **Request Body:**
+```json
+{
+    "Username": "atmint",
+    "email": "atmint@gmail.com",
+    "password": "Test123",
+    "image_path": "test.png",
+
+}
+```
+- **Response Example:**
+```json
+{
+    "status": true,
+    "message": "Update Successful"
+}
+```
+
+### 6. Login User
+- **Method:** `POST`
+- **URL:** `/api/auth/login`
+- **Description:** Login User.
+- **Request Body:**
+```json
+{
+  "email": "atmint@gmail.com",
+  "password": "Test123",
+}
+```
+- **Response Example:**
+```json
+{
+    "status": true,
+    "message": "Login Successful"
+}
+
+
+
+
 
