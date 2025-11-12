@@ -199,3 +199,22 @@ https://magang.sekolahan.id
 }
 ```
 
+### 5. Get Profile
+- **Method:** `GET`
+- **URL:** `/api/get/{id}`
+- **Description:** Mengambil data profile.
+- **Response Example:**
+```json
+{
+    "status": true,
+    "message": "Success get user data",
+    "data": {
+        "id": 1,
+        "username": "UserEditBaru",
+        "email": "usertest@example.com",
+        "email_verified_at": null,
+        "image_path": "https://magang.sekolahan.id/upload/img/oscNYAepxI9NGlkGwtsw4VXyHrapZoTJ0Y1iRnLB.png",
+        "created_at": "2025-11-12T01:15:21.000000Z",
+        "updated_at": "2025-11-12T08:43:20.000000Z"
+    }
+```
