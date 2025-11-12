@@ -34,4 +34,5 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
 
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
     Route::patch('/update/{user}', [ProfileController::class, 'update'])->name('update');
+    Route::get('/get/{user}', [ProfileController::class, 'index'])->name('index');
 });

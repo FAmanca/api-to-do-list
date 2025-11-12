@@ -19,6 +19,23 @@ class ProfileController extends Controller
         $this->upload = new UploadRepository();
     }
 
+    public function index(User $user)
+    {
+        try {
+            
+            return response()->json([
+                'status' => true,
+                'message' => 'Success get user data',
+                'data' => $user
+            ], 200);
+
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Internal Server Error',
+            ], 500);
+        }
+    }
+
     public function update(User $user, Request $request)
     {
         try {
