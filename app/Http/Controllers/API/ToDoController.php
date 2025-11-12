@@ -43,17 +43,13 @@ class ToDoController extends Controller
             $validate = Validator::make($request->all(), [
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
-                'priority' => 'nullable|in:low,medium,high',
-                'due_date' => 'nullable|date',
-                'is_completed' => 'boolean'
+                'priority' => 'nullable|in:low,medium,high'
             ]);
 
             $list = new ToDoList();
             $list->title = $request->input('title');
             $list->description = $request->input('description');
             $list->priority = $request->input('priority');
-            $list->due_date = $request->input('due_date');
-            $list->is_completed = $request->input('is_completed') == null ? 0 : $request->input('is_completed');
             $list->save();
 
             return response()->json([
@@ -78,16 +74,12 @@ class ToDoController extends Controller
                 'title' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
                 'priority' => 'nullable|in:low,medium,high',
-                'due_date' => 'nullable|date',
-                'is_completed' => 'nullable|boolean'
             ]);
 
             $list->update([
                 'title' => $request->title,
                 'description' => $request->description,
                 'priority' => $request->priority,
-                'due_date' => $request->due_date,
-                'is_completed' => $request->is_completed,
             ]);
             return response()->json([
                 'status' => true,
