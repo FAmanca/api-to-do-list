@@ -197,8 +197,5 @@ https://magang.sekolahan.id
     "status": true,
     "message": "Login Successful"
 }
-
-
-
-
+```
 
