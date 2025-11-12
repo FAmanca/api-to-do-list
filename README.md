@@ -24,8 +24,6 @@ https://magang.sekolahan.id
                 "title": "List no 1",
                 "description": "deskripsi list no 1",
                 "priority": "low",
-                "due_date": "2025-11-03",
-                "is_completed": null,
                 "created_at": "2025-11-03T07:14:55.000000Z",
                 "updated_at": "2025-11-03T07:14:55.000000Z"
             },
@@ -34,8 +32,6 @@ https://magang.sekolahan.id
                 "title": "List no 1",
                 "description": "deskripsi list no 1",
                 "priority": "low",
-                "due_date": "2025-11-03",
-                "is_completed": 0,
                 "created_at": "2025-11-03T07:24:56.000000Z",
                 "updated_at": "2025-11-03T07:24:56.000000Z"
             },
@@ -44,8 +40,6 @@ https://magang.sekolahan.id
                 "title": "List no 1",
                 "description": "deskripsi list no 1",
                 "priority": "low",
-                "due_date": "2025-11-03",
-                "is_completed": 0,
                 "created_at": "2025-11-03T07:48:08.000000Z",
                 "updated_at": "2025-11-03T07:48:08.000000Z"
             },
@@ -54,8 +48,6 @@ https://magang.sekolahan.id
                 "title": "List no 2",
                 "description": "deskripsi list no 2",
                 "priority": "low",
-                "due_date": "2025-11-03",
-                "is_completed": 0,
                 "created_at": "2025-11-03T07:48:25.000000Z",
                 "updated_at": "2025-11-03T07:48:25.000000Z"
             }
@@ -100,9 +92,7 @@ https://magang.sekolahan.id
 {
   "title": "List no 2",
   "description": "deskripsi list no 2",
-  "priority": "low",
-  "due_date": "2025-11-03",
-  "is_completed": 0
+  "priority": "low|medium|high",
 }
 ```
 - **Response Example:**
@@ -114,8 +104,6 @@ https://magang.sekolahan.id
         "title": "List no 2",
         "description": "deskripsi list no 2",
         "priority": "low",
-        "due_date": "2025-11-03",
-        "is_completed": 0,
         "updated_at": "2025-11-03T07:48:25.000000Z",
         "created_at": "2025-11-03T07:48:25.000000Z",
         "id": 4
@@ -133,8 +121,6 @@ https://magang.sekolahan.id
   "title": "List no 2 Edit",
   "description": "deskripsi list no 2 Edit",
   "priority": "high",
-  "due_date": "2025-11-03",
-  "is_completed": 1
 }
 ```
 - **Response Example:**
@@ -147,8 +133,6 @@ https://magang.sekolahan.id
         "title": "List no 1 Edit",
         "description": "deskripsi list no 1 Edit",
         "priority": "low",
-        "due_date": "2025-11-03",
-        "is_completed": "1",
         "created_at": "2025-11-03T07:14:55.000000Z",
         "updated_at": "2025-11-03T07:52:40.000000Z"
     }
@@ -169,8 +153,6 @@ https://magang.sekolahan.id
         "title": "List no 1 Edit",
         "description": "deskripsi list no 1 Edit",
         "priority": "low",
-        "due_date": "2025-11-03",
-        "is_completed": 1,
         "created_at": "2025-11-03T07:14:55.000000Z",
         "updated_at": "2025-11-03T07:52:40.000000Z"
     }
