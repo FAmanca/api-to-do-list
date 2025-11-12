@@ -32,3 +32,6 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
 
+Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
+    Route::patch('/update/{user}', [ProfileController::class, 'update'])->name('update');
+});

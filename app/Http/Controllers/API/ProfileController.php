@@ -2,28 +2,34 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use Exception;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Repository\UploadRepository;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-        protected $upload;
+    protected $upload;
 
     public function __construct()
     {
         $this->upload = new UploadRepository();
     }
 
-    public function update(User $user, Request $request){
+    public function update(User $user, Request $request)
+    {
         try {
-         $validate = Validator::make($request->all(), [
+            $validate = Validator::make($request->all(), [
                 'username' => 'nullable|string|max:255',
-                'email' => 'nullable|email|unique:users,email',
-                'password' => 'nullable|string',
+                'email' => 'nullable|email|unique:users,email,' . $user->id,
+                'password' => 'nullable|string|min:6',
                 'image_path' => 'nullable|mimes:jpg,jpeg,png,webp|max:5120',
             ]);
 
-          if ($validate->fails()) {
+            if ($validate->fails()) {
                 return response()->json([
                     'message' => 'Invalid Data',
                     'errors' => $validate->errors()
@@ -31,7 +37,6 @@ class ProfileController extends Controller
             }
 
             $data = [];
-
             $fields = ['username', 'email', 'password'];
 
             foreach ($fields as $field) {
@@ -44,33 +49,35 @@ class ProfileController extends Controller
                 }
             }
 
-            $updateUser->update($data);
+            if (!empty($data)) {
+                $user->update($data);
+            }
 
             if ($request->hasFile('image_path')) {
                 $newImage = $request->file('image_path');
 
-                if ($updateUser->image_path) {
-                    $updateUser->image_path = $this->upload->update($updateUser->image_path, $newImage);
+                if ($user->image_path) {
+                    $user->image_path = $this->upload->update($user->image_path, $newImage);
                 } else {
-                    $updateUser->image_path = $this->upload->save($newImage);
+                    $user->image_path = $this->upload->save($newImage);
                 }
 
-                $updateUser->save();
+                $user->save();
             }
+            $user->refresh();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Update Success',
-                'list' => $list
             ], 200);
+
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Something Went Wrong',
-                // 'error' => $e->getMessage()
             ], 500);
         }
     }
 
-    }
+}
 
